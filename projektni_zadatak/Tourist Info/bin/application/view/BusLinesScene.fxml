@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="200.0" prefWidth="259.0" style="-fx-control-inner-background: #fbf7ec;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.BusLinesSceneController">
+   <children>
+      <TableView fx:id="busLinesTable" onMouseClicked="#openSceneForDetails" prefHeight="200.0" prefWidth="316.0">
+        <columns>
+          <TableColumn fx:id="lineNum" prefWidth="75.0" text="Broj linije" />
+          <TableColumn fx:id="from" prefWidth="135.0" text="Odrediste od" />
+            <TableColumn fx:id="to" prefWidth="105.0" text="Odrediste do" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

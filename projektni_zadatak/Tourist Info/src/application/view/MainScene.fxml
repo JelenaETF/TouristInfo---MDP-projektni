@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="441.0" prefWidth="646.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainSceneController">
+   <children>
+      <ImageView fitHeight="441.0" fitWidth="706.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/C:/Users/Jelena/Desktop/Jelena/Faks/III%20godina/VI%20semestar/MREZNO%20I%20DISTRIBUIRANO%20PROGRAMIRANJE/projektni_zadatak/Tourist%20Info/resources/images/nils-nedel-386683-unsplash.jpg" />
+         </image>
+      </ImageView>
+      <VBox layoutX="6.0" prefHeight="441.0" prefWidth="142.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#showTouristAttractions" prefHeight="37.0" prefWidth="145.0" style="-fx-background-color: transparent; -fx-text-fill: #ffffff;" text="Turističke atrakcije">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Italic" size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#showHotels" prefHeight="37.0" prefWidth="136.0" style="-fx-background-color: transparent; -fx-text-fill: #ffffff;" text="Hoteli">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Italic" size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#showBusLines" prefHeight="37.0" prefWidth="141.0" style="-fx-background-color: transparent; -fx-text-fill: #ffffff;" text="Gradski prevoz">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Italic" size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#showEvents" prefHeight="37.0" prefWidth="140.0" style="-fx-background-color: transparent; -fx-text-fill: #ffffff;" text="Događaji">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Italic" size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#showWeather" prefHeight="37.0" prefWidth="141.0" style="-fx-background-color: transparent; -fx-text-fill: #ffffff;" text="Temperatura">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Italic" size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#showTime" prefHeight="37.0" prefWidth="148.0" style="-fx-background-color: transparent; -fx-text-fill: #ffffff;" text="Tačno vrijeme">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Italic" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <Separator layoutX="151.0" orientation="VERTICAL" prefHeight="441.0" prefWidth="0.0" />
+      <BorderPane fx:id="borderPane" layoutX="165.0" layoutY="29.0" prefHeight="257.0" prefWidth="268.0" style="-fx-background-color: transparent;" />
+   </children>
+</AnchorPane>

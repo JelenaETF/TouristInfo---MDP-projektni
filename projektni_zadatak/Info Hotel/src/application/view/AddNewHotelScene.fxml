@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="244.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.AddNewHotelSceneController">
+   <children>
+      <Label layoutX="14.0" layoutY="34.0" text="Naziv" />
+      <Label layoutX="16.0" layoutY="75.0" text="Adresa" />
+      <Label layoutX="14.0" layoutY="117.0" text="Telefon" />
+      <TextField fx:id="name" layoutX="87.0" layoutY="30.0" />
+      <TextField fx:id="telephone" layoutX="87.0" layoutY="113.0" />
+      <TextField fx:id="address" layoutX="87.0" layoutY="71.0" />
+      <Button layoutX="98.0" layoutY="205.0" mnemonicParsing="false" onAction="#addHotel" text="Potvrdi" />
+      <ComboBox fx:id="category" layoutX="87.0" layoutY="156.0" prefWidth="150.0" />
+      <Label layoutX="14.0" layoutY="160.0" text="Kategorija" />
+   </children>
+</AnchorPane>

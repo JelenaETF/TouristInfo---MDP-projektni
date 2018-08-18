@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service" xmlns:intf="http://service" xmlns:tns1="http://model" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://service" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://model"/>
+   <element name="getAll">
+    <complexType/>
+   </element>
+   <element name="getAllResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getAllReturn" type="tns1:TouristAttraction"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://model" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="TouristAttraction">
+    <sequence>
+     <element name="description" nillable="true" type="xsd:string"/>
+     <element name="imageURL" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getAllResponse">
+
+      <wsdl:part element="impl:getAllResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllRequest">
+
+      <wsdl:part element="impl:getAll" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="TouristAttractionService">
+
+      <wsdl:operation name="getAll">
+
+         <wsdl:input message="impl:getAllRequest" name="getAllRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllResponse" name="getAllResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="TouristAttractionServiceSoapBinding" type="impl:TouristAttractionService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getAll">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="TouristAttractionServiceService">
+
+      <wsdl:port binding="impl:TouristAttractionServiceSoapBinding" name="TouristAttractionService">
+
+         <wsdlsoap:address location="http://localhost:8080/InfoTown/services/TouristAttractionService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

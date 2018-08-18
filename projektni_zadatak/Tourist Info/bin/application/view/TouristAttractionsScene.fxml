@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="186.0" prefWidth="229.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.TouristAttractionsSceneController">
+   <children>
+      <ListView fx:id="names" onMouseClicked="#openSceneForDetails" opacity="0.9" prefHeight="247.0" prefWidth="232.0" style="-fx-background-color: transparent; -fx-control-inner-background: #fbf7ec;" />
+   </children>
+</AnchorPane>

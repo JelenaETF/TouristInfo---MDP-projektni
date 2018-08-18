@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="292.0" prefWidth="874.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.EventsSceneController">
+   <children>
+      <TableView fx:id="eventsTable" layoutX="14.0" layoutY="14.0" prefHeight="226.0" prefWidth="481.0">
+        <columns>
+          <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Naziv" />
+          <TableColumn fx:id="dateTimeColumn" prefWidth="111.0" text="Datum i vrijeme" />
+            <TableColumn fx:id="locationColumn" prefWidth="88.0" text="Lokacija" />
+            <TableColumn fx:id="categoryColumn" text="Kategorija" />
+            <TableColumn fx:id="descriptionColumn" prefWidth="126.0" text="Opis" />
+        </columns>
+      </TableView>
+      <Button layoutX="14.0" layoutY="252.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="50.0" text="Otkazi" />
+      <Label layoutX="532.0" layoutY="14.0" text="Dodaj novi dogadjaj" />
+      <Label layoutX="535.0" layoutY="47.0" text="Naziv" />
+      <Label layoutX="535.0" layoutY="85.0" text="Datum i vrijeme" />
+      <Label layoutX="535.0" layoutY="125.0" text="Lokacija" />
+      <Label layoutX="536.0" layoutY="165.0" prefHeight="17.0" prefWidth="56.0" text="Kategorija" />
+      <Separator layoutX="532.0" layoutY="30.0" prefHeight="3.0" prefWidth="107.0" />
+      <DatePicker fx:id="date" layoutX="639.0" layoutY="81.0" prefHeight="25.0" prefWidth="115.0" />
+      <TextField fx:id="name" layoutX="639.0" layoutY="43.0" prefHeight="25.0" prefWidth="115.0" />
+      <TextField fx:id="hour" layoutX="764.0" layoutY="81.0" prefHeight="25.0" prefWidth="36.0" />
+      <TextField fx:id="minutes" layoutX="816.0" layoutY="81.0" prefHeight="25.0" prefWidth="36.0" />
+      <Label layoutX="806.0" layoutY="85.0" prefHeight="17.0" prefWidth="4.0" text=":" />
+      <TextField fx:id="location" layoutX="639.0" layoutY="121.0" prefHeight="25.0" prefWidth="115.0" />
+      <ComboBox fx:id="category" layoutX="639.0" layoutY="161.0" prefHeight="25.0" prefWidth="115.0" />
+      <Button layoutX="640.0" layoutY="252.0" mnemonicParsing="false" onAction="#add" prefHeight="25.0" prefWidth="113.0" text="Potvrdi dodavanje" />
+      <Label layoutX="536.0" layoutY="200.0" text="Kratak opis" />
+      <TextArea fx:id="description" layoutX="639.0" layoutY="195.0" prefHeight="45.0" prefWidth="218.0" />
+   </children>
+</AnchorPane>

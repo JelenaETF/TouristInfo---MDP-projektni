@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="300.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.AttractionDetailsSceneController">
+   <children>
+      <TextArea fx:id="description" editable="false" layoutY="211.0" prefHeight="90.0" prefWidth="360.0" />
+      <ImageView fx:id="image" fitHeight="211.0" fitWidth="360.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

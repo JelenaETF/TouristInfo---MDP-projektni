@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="322.0" prefWidth="499.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.EventsSceneController">
+   <children>
+      <TableView fx:id="eventsTable" layoutX="14.0" layoutY="14.0" prefHeight="205.0" prefWidth="459.0">
+        <columns>
+          <TableColumn fx:id="name" prefWidth="75.0" text="Naziv" />
+          <TableColumn fx:id="dateTime" prefWidth="109.0" text="Datum i vrijeme" />
+            <TableColumn fx:id="location" prefWidth="75.0" text="Lokacija" />
+            <TableColumn fx:id="category" prefWidth="71.0" text="Kategorija" />
+            <TableColumn fx:id="description" prefWidth="127.0" text="Opis" />
+        </columns>
+      </TableView>
+      <Label layoutX="22.0" layoutY="247.0" text="Pretrazi po" textFill="WHITE" />
+      <ComboBox fx:id="searchParameterComboBox" layoutX="93.0" layoutY="243.0" onAction="#makeSearch" prefHeight="25.0" prefWidth="126.0" />
+      <ComboBox fx:id="categoryComboBox" layoutX="258.0" layoutY="243.0" onAction="#showTableForCategory" prefHeight="25.0" prefWidth="126.0" visible="false" />
+      <DatePicker fx:id="firstDatePicker" layoutX="258.0" layoutY="243.0" prefHeight="25.0" prefWidth="111.0" visible="false" />
+      <DatePicker fx:id="secondDatePicker" layoutX="258.0" layoutY="277.0" prefHeight="25.0" prefWidth="111.0" visible="false" />
+      <Button fx:id="confirmSearchButton" layoutX="421.0" layoutY="243.0" mnemonicParsing="false" onAction="#showTableForDateOrPeriod" text="Potvrdi" visible="false" />
+      <ComboBox fx:id="locationComboBox" layoutX="264.0" layoutY="243.0" onAction="#showTableForLocation" prefHeight="25.0" prefWidth="126.0" visible="false" />
+   </children>
+</AnchorPane>
