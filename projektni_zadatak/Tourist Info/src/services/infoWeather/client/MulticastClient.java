@@ -7,7 +7,7 @@ import java.net.MulticastSocket;
 public class MulticastClient {
 
 	public static final String IP_ADDRESS = "224.0.0.11";
-	public static final int PORT = 1818;
+	public static final int PORT = 1820;
 	
 	public static String getWeatherInfo() {
 		String weatherInfo = null;

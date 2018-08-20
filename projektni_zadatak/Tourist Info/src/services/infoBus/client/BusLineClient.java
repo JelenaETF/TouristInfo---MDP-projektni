@@ -65,4 +65,7 @@ public class BusLineClient {
 	   return status;
    }
    
+   public void endConversation() {
+	   printWriter.println("END");
+   }
 }

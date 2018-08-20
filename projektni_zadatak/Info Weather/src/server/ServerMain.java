@@ -10,7 +10,7 @@ import rest.model.Weather;
 public class ServerMain {
 
 	private static final String IP_ADDRESS = "224.0.0.11";
-	private static final int PORT = 1818;
+	private static final int PORT = 1820;
 	
 	public static void main(String[] args) {
 		try {

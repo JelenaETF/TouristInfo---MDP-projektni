@@ -67,10 +67,9 @@ public class ServerThread extends Thread{
 					}
 					i++;
 				}
-			}else if("END".equals(command)) {
+			}else if(command.equals("END")){
 				break;
-			}
-			else {
+			}else {
 				printWriter.println("NOK");
 			}
 		 }

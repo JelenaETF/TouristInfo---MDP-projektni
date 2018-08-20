@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="260.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainSceneController">
+   <children>
+      <TableView fx:id="clientsTable" layoutX="14.0" layoutY="11.0" prefHeight="200.0" prefWidth="266.0">
+        <columns>
+          <TableColumn fx:id="ipAddress" prefWidth="75.0" text="IP adresa" />
+          <TableColumn fx:id="port" prefWidth="75.0" text="Port" />
+            <TableColumn fx:id="activationTime" prefWidth="115.0" text="Vrijeme aktivacije" />
+        </columns>
+      </TableView>
+      <Button layoutX="234.0" layoutY="223.0" mnemonicParsing="false" onAction="#shutDown" text="Ugasi" />
+   </children>
+</AnchorPane>

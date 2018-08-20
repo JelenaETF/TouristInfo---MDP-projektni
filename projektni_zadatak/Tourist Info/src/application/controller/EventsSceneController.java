@@ -2,8 +2,10 @@ package application.controller;
 
 import java.net.URL;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import application.MessageBox;
 import javafx.collections.FXCollections;
@@ -87,9 +89,9 @@ public class EventsSceneController implements Initializable{
 				categoryComboBox.setVisible(false);
 				locationComboBox.setVisible(true);
 				locationComboBox.getItems().clear();
-				List<String> locations = EventClient.getAllLocations();
+				Set<String> locations = new HashSet<>(EventClient.getAllLocations());
 				if(locations != null) {
-					locationComboBox.getItems().addAll(locations);
+				    locationComboBox.getItems().addAll(locations);
 				}
 				break;
 			}

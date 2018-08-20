@@ -27,20 +27,17 @@ public class EventCreator {
 	private static Gson gson = new Gson();
 	
 	static{
-		LocalDate date1 = LocalDate.of(2018, 8, 12);
-		LocalDateTime dateTime1 = date1.atTime(LocalTime.of(21, 00));
+		LocalDateTime dateTime1 = LocalDateTime.of(2018, 10, 28, 22, 30);
 		Event first = new Event("Fresh Wave", dateTime1, "Tvrdjava Kastel", "Fresh Wave je najveci festival elektronske muzike u BiH.", EventCategory.FESTIVAL);
 		first.setId(1);
 		events.add(first);
 		
-		LocalDate date2 = LocalDate.of(2018, 8, 17);
-		LocalDateTime dateTime2 = date2.atTime(LocalTime.of(21, 30));
+		LocalDateTime dateTime2 = LocalDateTime.of(2018, 10, 22, 21, 30);
 		Event second = new Event("Kastel Rok Fest", dateTime2, "Tvrdjava Kastel", "Jedan od rok festivala sa najduzom tradicijom odrzava se 13. put na Tvrdjavi Kastel.", EventCategory.FESTIVAL);
 		second.setId(2);
 		events.add(second);
 		
-		LocalDate date3 = LocalDate.of(2018, 8, 31);
-		LocalDateTime dateTime3 = date3.atTime(LocalTime.of(9, 30));
+		LocalDateTime dateTime3 = LocalDateTime.of(2018, 11, 2, 9, 30);
 		Event third = new Event("Koncert etno grupe \"Perezvon\"", dateTime3, "Hram Hrista Spasitelja", "Koncert ce odrzati ruska etno grupa koja nastupa u najprestiznijim dvoranama Moskve.", EventCategory.CONCERT);
 		third.setId(3);
 		events.add(third);
