@@ -1,5 +1,7 @@
 package application;
 
+import java.io.File;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +13,8 @@ public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
+		//File.separator vraca \ umjesto /
+	
 		Parent root = FXMLLoader.load(getClass().getResource("/application/view/HotelsScene.fxml"));
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);

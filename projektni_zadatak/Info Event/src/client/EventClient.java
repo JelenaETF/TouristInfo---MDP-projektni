@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -22,10 +23,12 @@ import com.google.gson.reflect.TypeToken;
 
 import model.Event;
 import model.EventCategory;
+import util.LoggerWrapper;
 
 public class EventClient {
 
 	private static final String BASE_PATH = "http://localhost:8080/InfoEvent/events";
+	private static LoggerWrapper loggerWrapper = LoggerWrapper.getInstance();
 	
 	public static List<Event> getAll(){
 		List<Event> events = new ArrayList<>();
@@ -55,6 +58,7 @@ public class EventClient {
 			}
 		}catch (Exception e) {
 			// TODO: handle exception
+			loggerWrapper.getLogger().log(Level.SEVERE, "Problem with getting all events from service", e);
 			return null;
 		}
 		return events;
@@ -77,7 +81,7 @@ public class EventClient {
 		    	return false;
 		    }
 		}catch (Exception e) {
-			// TODO: handle exception
+			loggerWrapper.getLogger().log(Level.SEVERE, "Problem with canceling event", e);
 			return false;
 		}
 		return true;
@@ -105,7 +109,7 @@ public class EventClient {
 				return id;
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			loggerWrapper.getLogger().log(Level.SEVERE, "Problem with adding new event", e);
 			return -1;
 		}
 	}

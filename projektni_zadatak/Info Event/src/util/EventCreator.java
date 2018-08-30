@@ -12,6 +12,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -20,10 +21,12 @@ import model.Event;
 import model.EventCategory;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+import repository.EventRepository;
 
 public class EventCreator {
 
 	private static List<Event> events = new ArrayList<>();
+	private static LoggerWrapper loggerWrapper = LoggerWrapper.getInstance();
 	private static Gson gson = new Gson();
 	
 	static{
@@ -45,7 +48,7 @@ public class EventCreator {
 	
 	public static void saveEventsAsJson() {
 		String jsonEvents = gson.toJson(events);
-		String path = "C:\\Users\\Jelena\\Desktop\\Jelena\\Faks\\III godina\\VI semestar\\MREZNO I DISTRIBUIRANO PROGRAMIRANJE\\projektni_zadatak\\Info Event\\resources\\events.json";
+		String path = EventRepository.getProperties().getProperty("events_file_path");
 		File eventsFile = new File(path);
 		if(!eventsFile.exists()) {
 			try {
@@ -54,14 +57,14 @@ public class EventCreator {
 				printWriter.close();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggerWrapper.getLogger().log(Level.SEVERE, "Problem with saving events to file", e);
 			}
 		}
 	}
 	
 	public static List<Event> getEventsFromJsonFile(){
 		List<Event> events = null;
-		String path = "C:\\Users\\Jelena\\Desktop\\Jelena\\Faks\\III godina\\VI semestar\\MREZNO I DISTRIBUIRANO PROGRAMIRANJE\\projektni_zadatak\\Info Event\\resources\\events.json";
+		String path = EventRepository.getProperties().getProperty("events_property_path");
 		File file = new File(path);
 		if(!file.exists())
 			return null;
@@ -71,8 +74,7 @@ public class EventCreator {
 	    	events = gson.fromJson(bufferedReader.readLine(), type);
 	        bufferedReader.close();
 	    }catch (Exception e) {
-			// TODO: handle exception
-	    	e.printStackTrace();
+			loggerWrapper.getLogger().log(Level.SEVERE, "Problem with loading events from file", e);
 		}
 	    return events;
 	}
@@ -83,7 +85,7 @@ public class EventCreator {
 		try(Jedis jedis = pool.getResource()){
 			jedis.set("events", eventsAsJson);
 		}catch (Exception e) {
-			// TODO: handle exception
+			loggerWrapper.getLogger().log(Level.SEVERE, "Redis is not started", e);
 			System.out.println("You must start Redis!");
 		}
 		pool.close();
@@ -98,7 +100,7 @@ public class EventCreator {
 			Type type = new TypeToken<List<Event>>() {}.getType();
 			events = gson.fromJson(eventsAsJson, type);
 		}catch (Exception e) {
-			// TODO: handle exception
+			loggerWrapper.getLogger().log(Level.SEVERE, "Redis is not started", e);
 			System.out.println("You must start Redis!");
 		}
 		pool.close();

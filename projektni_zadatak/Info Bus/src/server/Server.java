@@ -3,11 +3,15 @@ package server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.logging.Level;
 
 import util.BusLineCreator;
+import util.LoggerWrapper;
 
 public class Server {
     
+	private static LoggerWrapper loggerWrapper = LoggerWrapper.getInstance();
+	
 	public static void main(String[] args) {
 		try {
 			BusLineCreator.getInstance();
@@ -20,7 +24,7 @@ public class Server {
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			loggerWrapper.getLogger().log(Level.SEVERE, "Unable to communicate with Tourist Info", e);
 		}
 	}
 }

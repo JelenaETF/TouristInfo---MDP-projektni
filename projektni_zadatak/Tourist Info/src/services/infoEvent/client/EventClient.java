@@ -15,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import services.infoEvent.model.*;
+import util.MailSender;
 
 public class EventClient {
     
@@ -45,7 +46,7 @@ public class EventClient {
 			eventsByCategory.add(event);
 		}
 		}catch (Exception e) {
-			// TODO: handle exception
+			MailSender.send("Problem u komunikaciji sa aplikacijom Info Event! Neuspjesno filtriranje po kategoriji.");
 			return null;
 		}
 		return eventsByCategory;
@@ -64,7 +65,7 @@ public class EventClient {
 			allLocations.add(jsonObject.getString("location"));
 		}
 		}catch (Exception e) {
-			// TODO: handle exception
+			MailSender.send("Problem u komunikaciji sa aplikacijom Info Event! Neuspjesno dohvatanje svih dogadjaja.");
 			return null;
 		}
 		return allLocations;
@@ -96,7 +97,7 @@ public class EventClient {
 			eventsByLocation.add(event);
 		}
 		}catch (Exception e) {
-			// TODO: handle exception
+			MailSender.send("Problem u komunikaciji sa aplikacijom Info Event! Neuspjesno filtriranje po lokaciji.");
 			return null;
 		}
 		return eventsByLocation;
@@ -127,7 +128,7 @@ public class EventClient {
 			eventsByDate.add(event);
 		}
 		}catch (Exception e) {
-			// TODO: handle exception
+			MailSender.send("Problem u komunikaciji sa aplikacijom Info Event! Neuspjesno filtriranje po datumu.");
 			return null;
 		}
 		return eventsByDate;
@@ -158,7 +159,7 @@ public class EventClient {
 			eventsByPeriod.add(event);
 		}
 		}catch (Exception e) {
-			// TODO: handle exception
+			MailSender.send("Problem u komunikaciji sa aplikacijom Info Event! Neuspjesno filtriranje po periodu.");
 			return null;
 		}
 		return eventsByPeriod;

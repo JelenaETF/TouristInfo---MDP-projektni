@@ -7,10 +7,14 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 import services.infoHotel.model.Hotel;
+import util.LoggerWrapper;
 
 public class JavaSerialization {
+	
+	private static LoggerWrapper loggerWrapper = LoggerWrapper.getInstance();
 	
 	public static void serializeHotel(Hotel hotel) throws Exception{
 		String path = "resources"+File.separator+"serialized"+File.separator+"java"+File.separator+ hotel.getId()+".ser";
@@ -27,7 +31,7 @@ public class JavaSerialization {
 			objectInputStream.close();
 			return hotel;
 		}catch (Exception e) {
-			// TODO: handle exception
+			loggerWrapper.getLogger().log(Level.SEVERE, "Problem with Java deserialization", e);
 			return null;
 		}
 	}
@@ -47,7 +51,7 @@ public class JavaSerialization {
 		
 			return javaHotels;
 		}catch (Exception e) {
-			// TODO: handle exception
+			loggerWrapper.getLogger().log(Level.SEVERE, "Problem with Java deserialization", e);
 			return null;
 		}
 	}

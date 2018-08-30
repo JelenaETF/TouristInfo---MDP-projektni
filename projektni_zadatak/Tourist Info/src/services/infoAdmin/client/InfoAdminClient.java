@@ -3,13 +3,15 @@ package services.infoAdmin.client;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.Socket;
-
+import java.util.logging.Level;
 
 import application.Main;
 import application.controller.BusLinesSceneController;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import util.LoggerWrapper;
+import util.TimeThread;
 
 
 public class InfoAdminClient extends Thread{
@@ -18,6 +20,7 @@ public class InfoAdminClient extends Thread{
 	private Socket socket;
 	private BufferedReader bufferedReader;
 	private Stage mainStage;
+	private LoggerWrapper loggerWrapper = LoggerWrapper.getInstance();
 	
 	public InfoAdminClient(Stage mainStage) throws Exception {
 		socket = new Socket("127.0.0.1", PORT);
@@ -35,6 +38,7 @@ public class InfoAdminClient extends Thread{
 	        	 if(BusLinesSceneController.getBusLineClient() != null) {
 	        		 mainStage.setOnHiding(e -> BusLinesSceneController.getBusLineClient().endConversation());
 	        	 }
+	        	 TimeThread.setTurnOff(true);
 	        	 mainStage.close();
 	        	 }
 	        	 ); 
@@ -42,8 +46,7 @@ public class InfoAdminClient extends Thread{
 	          }
 	  		}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			loggerWrapper.getLogger().log(Level.SEVERE, "Problem with reading from socket", e);
 		} 
 	}
 }

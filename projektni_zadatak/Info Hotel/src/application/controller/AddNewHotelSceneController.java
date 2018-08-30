@@ -3,6 +3,7 @@ package application.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 
 import application.MessageBox;
 import javafx.fxml.FXML;
@@ -13,6 +14,7 @@ import javafx.scene.control.TextField;
 import services.infoHotel.HotelServiceInterface;
 import services.infoHotel.client.HotelClient;
 import services.infoHotel.model.Hotel;
+import util.LoggerWrapper;
 
 public class AddNewHotelSceneController implements Initializable {
 
@@ -26,7 +28,7 @@ public class AddNewHotelSceneController implements Initializable {
 	private ComboBox<String> category;
 	
 	private static TableView<Hotel> tableToUpdate;
-	
+	private LoggerWrapper loggerWrapper = LoggerWrapper.getInstance();
 	private HotelServiceInterface service = HotelClient.getHotelService();
 	
 
@@ -52,8 +54,7 @@ public class AddNewHotelSceneController implements Initializable {
 					MessageBox.display("Uspjesno dodano!");
 				}
 			}catch (Exception e) {
-				// TODO: handle exception
-				System.out.println("Greska na serveru");
+				loggerWrapper.getLogger().log(Level.SEVERE, "Problem with communication with server ", e);
 			}
 		}
 	}

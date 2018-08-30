@@ -81,15 +81,16 @@ public class EventsSceneController implements Initializable{
     	Event eventToCancel = eventsTable.getSelectionModel().getSelectedItem();
     	if(eventToCancel == null)
     		MessageBox.display("Morate odabrati dogadjaj!");
-    	
-    	if(EventClient.cancelEvent(eventToCancel)) {
-    		MessageBox.display("Dogadjaj uspjesno otkazan");
-    		eventsList.remove(eventToCancel);
-    		eventsTable.setItems(eventsList);
-    		eventsTable.refresh();
+    	else {
+    		if(EventClient.cancelEvent(eventToCancel)) {
+    			MessageBox.display("Dogadjaj uspjesno otkazan");
+    			eventsList.remove(eventToCancel);
+    			eventsTable.setItems(eventsList);
+    			eventsTable.refresh();
+    		}
+    		else
+    			MessageBox.display("Greska na serverskoj strani");
     	}
-    	else
-    		MessageBox.display("Greska na serverskoj strani");
     }
     
     public void add() {

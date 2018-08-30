@@ -7,14 +7,17 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 import com.google.gson.Gson;
 
 import services.infoHotel.model.Hotel;
+import util.LoggerWrapper;
 
 public class GsonSerialization {
 
 	private static Gson gson = new Gson();
+	private static LoggerWrapper loggerWrapper = LoggerWrapper.getInstance();
 	
     public static void serializeHotel(Hotel hotel) throws Exception {
     	String path = "resources"+File.separator+"serialized"+File.separator+"gson"+File.separator+ hotel.getId()+".json";
@@ -33,7 +36,7 @@ public class GsonSerialization {
     		reader.close();
     		return hotel;
     	}catch (Exception e) {
-			// TODO: handle exception
+			loggerWrapper.getLogger().log(Level.SEVERE, "Problem with GSON deserialization", e);
     		return null;
 		}
     }
@@ -53,7 +56,7 @@ public class GsonSerialization {
   
     		return gsonHotels;
     	}catch (Exception e) {
-			// TODO: handle exception
+    		loggerWrapper.getLogger().log(Level.SEVERE, "Problem with GSON deserialization", e);
     		return null;
 		}
     }

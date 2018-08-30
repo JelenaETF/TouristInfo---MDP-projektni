@@ -4,6 +4,8 @@ import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 
+import util.MailSender;
+
 public class MulticastClient {
 
 	public static final String IP_ADDRESS = "224.0.0.11";
@@ -22,7 +24,7 @@ public class MulticastClient {
 			weatherInfo = new String(datagramPacket.getData(), 0, datagramPacket.getLength());
 			return weatherInfo;
 		}catch (Exception e) {
-			// TODO: handle exception
+			MailSender.send("Problem u komunikaciji sa aplikacijom Info Weather!");
 			return null;
 		}
 	} 

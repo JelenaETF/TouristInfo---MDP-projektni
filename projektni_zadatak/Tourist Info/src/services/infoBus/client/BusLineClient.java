@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import services.infoBus.model.BusLine;
+import util.MailSender;
 
 public class BusLineClient {
     
@@ -29,6 +30,7 @@ public class BusLineClient {
 			objectInputStream = new ObjectInputStream(socket.getInputStream());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			MailSender.send("Problem u komunikaciji sa aplikacijom Info Bus!");
 			e.printStackTrace();
 		} 
 	}

@@ -7,6 +7,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
 
 import com.google.gson.Gson;
 
@@ -15,6 +16,7 @@ import services.infoBus.model.BusLine;
 public class BusLineCreator {
 	
 	private static BusLineCreator instance;
+	private LoggerWrapper loggerWrapper = LoggerWrapper.getInstance();
 	private static Gson gson = new Gson();
 	
 	public static BusLineCreator getInstance(){
@@ -50,12 +52,12 @@ public class BusLineCreator {
 	    File file = new File("resources"+File.separator+"bus lines.json");
 	    if(!file.exists()) {
 	    	try {
-	    		PrintWriter printWriter = new PrintWriter(new FileWriter(new File("resources"+File.separator+"bus lines.json")));
+	    		PrintWriter printWriter = new PrintWriter(new FileWriter(file));
 	    		printWriter.println(gson.toJson(lines));
 	    		printWriter.close();
 	    	} catch (Exception e) {
 			// TODO Auto-generated catch block
-	    		e.printStackTrace();
+	    		loggerWrapper.getLogger().log(Level.SEVERE, "Problem with saving bus line data", e);
 	    	}
 	    }
 	}

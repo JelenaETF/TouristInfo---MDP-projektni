@@ -7,7 +7,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 import services.infoHotel.HotelServiceInterface;
-
+import util.*;
 public class HotelClient {
 
 	public static HotelServiceInterface getHotelService() {
@@ -25,6 +25,7 @@ public class HotelClient {
 			return serviceInterface;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			MailSender.send("Problem u komunikaciji sa aplikacijom Info Hotel!");
 			e.printStackTrace();
 		}
 		return null;

@@ -1,0 +1,36 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from TouristAttractionServiceService WSDL service -->
+
+  <service name="TouristAttractionService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://service.infoTown.services"/>
+      <parameter name="wsdlServiceElement" value="TouristAttractionServiceService"/>
+      <parameter name="schemaQualified" value="http://service.infoTown.services,http://model.infoTown.services"/>
+      <parameter name="wsdlServicePort" value="TouristAttractionService"/>
+      <parameter name="className" value="services.infoTown.service.TouristAttractionServiceSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="TouristAttractionService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getAll" qname="operNS:getAll" xmlns:operNS="http://service.infoTown.services" returnQName="retNS:getAllReturn" xmlns:retNS="http://service.infoTown.services" returnType="rtns:TouristAttraction" xmlns:rtns="http://model.infoTown.services" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="getAll"/>
+
+      <typeMapping
+        xmlns:ns="http://model.infoTown.services"
+        qname="ns:TouristAttraction"
+        type="java:services.infoTown.model.TouristAttraction"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

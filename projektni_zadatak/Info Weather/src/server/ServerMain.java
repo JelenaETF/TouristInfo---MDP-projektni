@@ -3,14 +3,18 @@ package server;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
+import java.util.logging.Level;
 
 import rest.client.WeatherAPIClient;
 import rest.model.Weather;
+import util.LoggerWrapper;
 
 public class ServerMain {
 
 	private static final String IP_ADDRESS = "224.0.0.11";
 	private static final int PORT = 1820;
+	
+	private static LoggerWrapper loggerWrapper = LoggerWrapper.getInstance();
 	
 	public static void main(String[] args) {
 		try {
@@ -21,6 +25,7 @@ public class ServerMain {
 			DatagramPacket datagramPacket;
 			Weather weather = null;;
 			int counter = 0;
+			
 			while(true) {
 				if(counter == 0) {
 				   weather = WeatherAPIClient.getWeatherInfo();
@@ -33,9 +38,9 @@ public class ServerMain {
 				if(counter == 11)
 					counter = 0;
 			}
+			
 		}catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+			loggerWrapper.getLogger().log(Level.SEVERE, "Problem with multicast communication", e);
 		}
 	}
 	

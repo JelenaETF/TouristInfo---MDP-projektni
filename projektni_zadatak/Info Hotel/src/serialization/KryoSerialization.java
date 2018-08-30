@@ -6,16 +6,19 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 
 import services.infoHotel.model.Hotel;
+import util.LoggerWrapper;
 
 public class KryoSerialization {
       
 	private static Kryo kryo;
+	private static LoggerWrapper loggerWrapper = LoggerWrapper.getInstance();
 	
 	static {
 		kryo = new Kryo();
@@ -38,7 +41,7 @@ public class KryoSerialization {
 			input.close();
 			return hotel;
 		}catch (Exception e) {
-			// TODO: handle exception
+			loggerWrapper.getLogger().log(Level.SEVERE, "Problem with Kryo deserialization", e);
 			return null;
 		}
 	}
@@ -58,7 +61,7 @@ public class KryoSerialization {
 		
 			return kryoHotels;
 		}catch (Exception e) {
-			// TODO: handle exception
+			loggerWrapper.getLogger().log(Level.SEVERE, "Problem with Kryo deserialization", e);
 			return null;
 		}
 	}

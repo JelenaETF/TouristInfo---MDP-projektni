@@ -8,9 +8,11 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
 
 import services.infoBus.model.BusLine;
 import util.BusLineReader;
+import util.LoggerWrapper;
 
 public class ServerThread extends Thread{
 
@@ -18,6 +20,7 @@ public class ServerThread extends Thread{
 	private BufferedReader bufferedReader;
 	private PrintWriter printWriter;
 	private ObjectOutputStream objectOutputStream;
+	private LoggerWrapper loggerWrapper = LoggerWrapper.getInstance();
 	
 	public ServerThread(Socket socket) throws Exception{
 		this.socket = socket;
@@ -75,7 +78,7 @@ public class ServerThread extends Thread{
 		 }
 		}catch (Exception e) {
 			// TODO: handle exception
-			e.printStackTrace();
+			loggerWrapper.getLogger().log(Level.SEVERE, "Error happened while reading or writing to socket", e);
 		}
 	}
 	

@@ -7,8 +7,8 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
-  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -33,16 +33,16 @@
   <ns1:parameter name="className" value="org.apache.axis.Version"/>
  </ns1:service>
  <ns1:service name="TouristAttractionService" provider="java:RPC" style="wrapped" use="literal">
-  <ns3:operation name="getAll" qname="ns1:getAll" returnQName="ns1:getAllReturn" returnType="ns2:TouristAttraction" soapAction="" xmlns:ns1="http://service" xmlns:ns2="http://model" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+  <ns3:operation name="getAll" qname="ns1:getAll" returnQName="ns1:getAllReturn" returnType="ns2:TouristAttraction" soapAction="" xmlns:ns1="http://service.infoTown.services" xmlns:ns2="http://model.infoTown.services" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
   <ns1:parameter name="allowedMethods" value="getAll"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="TouristAttractionService"/>
-  <ns1:parameter name="className" value="service.TouristAttractionService"/>
+  <ns1:parameter name="className" value="services.infoTown.service.TouristAttractionService"/>
   <ns1:parameter name="wsdlServicePort" value="TouristAttractionService"/>
-  <ns1:parameter name="schemaQualified" value="http://model,http://service"/>
-  <ns1:parameter name="wsdlTargetNamespace" value="http://service"/>
+  <ns1:parameter name="schemaQualified" value="http://service.infoTown.services,http://model.infoTown.services"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://service.infoTown.services"/>
   <ns1:parameter name="wsdlServiceElement" value="TouristAttractionServiceService"/>
-  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns3:TouristAttraction" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:model.TouristAttraction" xmlns:ns3="http://model"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns3:TouristAttraction" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:services.infoTown.model.TouristAttraction" xmlns:ns3="http://model.infoTown.services"/>
  </ns1:service>
  <ns1:transport name="http">
   <ns1:requestFlow>

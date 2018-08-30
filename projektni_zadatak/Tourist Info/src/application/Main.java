@@ -1,8 +1,8 @@
 package application;
 
-import application.controller.BusLinesSceneController;
+import java.io.File;
+
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import services.infoAdmin.client.InfoAdminClient;
@@ -18,9 +18,10 @@ public class Main extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/application/view/MainScene.fxml"));
 			Scene scene = new Scene(root);
+			primaryStage.setTitle("Tourist info");
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
-			primaryStage.getIcons().add(new Image("file:resources/icon.png"));
+			primaryStage.getIcons().add(new Image("file:resources/images/icon.png"));
 			primaryStage.show();
 			
 			InfoAdminClient infoAdminClient = new InfoAdminClient(primaryStage);

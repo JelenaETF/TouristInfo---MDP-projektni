@@ -4,15 +4,18 @@ import java.net.URL;
 import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import services.infoBus.model.BusLine;
+import util.LoggerWrapper;
 
 public class BusLineDetailsSceneController implements Initializable{
 	
 	private static BusLine lineToShowDetails;
+	private LoggerWrapper loggerWrapper = LoggerWrapper.getInstance();
 	
 	@FXML
 	private TextArea detailsTextArea;
@@ -32,8 +35,7 @@ public class BusLineDetailsSceneController implements Initializable{
 			detailsTextArea.setEditable(false);
 			detailsTextArea.setWrapText(true);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			loggerWrapper.getLogger().log(Level.SEVERE, "Unable to get bus lines", e);
 		}
 	}
 	

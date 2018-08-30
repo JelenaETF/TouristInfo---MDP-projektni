@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.logging.Level;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -14,6 +15,7 @@ import services.infoBus.model.BusLine;
 public class BusLineReader {
 
 	private static Gson gson = new Gson();
+	private static LoggerWrapper loggerWrapper = LoggerWrapper.getInstance();
 	
 	public static List<BusLine> getAll(){
 		List<BusLine> lines = null;;
@@ -23,8 +25,7 @@ public class BusLineReader {
 			lines = gson.fromJson(reader.readLine(), type);
 			reader.close();
 		}catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+			loggerWrapper.getLogger().log(Level.SEVERE, "Problem with loading bus line data from file", e);
 		}
 		return lines;
 	} 

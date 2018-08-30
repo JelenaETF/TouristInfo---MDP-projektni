@@ -52,7 +52,7 @@ public class TouristAttractionServiceServiceLocator extends org.apache.axis.clie
 
     public services.infoTown.service.TouristAttractionService getTouristAttractionService(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
         try {
-        	services.infoTown.service.TouristAttractionServiceSoapBindingStub _stub = new services.infoTown.service.TouristAttractionServiceSoapBindingStub(portAddress, this);
+            services.infoTown.service.TouristAttractionServiceSoapBindingStub _stub = new services.infoTown.service.TouristAttractionServiceSoapBindingStub(portAddress, this);
             _stub.setPortName(getTouristAttractionServiceWSDDServiceName());
             return _stub;
         }
@@ -73,7 +73,7 @@ public class TouristAttractionServiceServiceLocator extends org.apache.axis.clie
     public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         try {
             if (services.infoTown.service.TouristAttractionService.class.isAssignableFrom(serviceEndpointInterface)) {
-            	services.infoTown.service.TouristAttractionServiceSoapBindingStub _stub = new services.infoTown.service.TouristAttractionServiceSoapBindingStub(new java.net.URL(TouristAttractionService_address), this);
+                services.infoTown.service.TouristAttractionServiceSoapBindingStub _stub = new services.infoTown.service.TouristAttractionServiceSoapBindingStub(new java.net.URL(TouristAttractionService_address), this);
                 _stub.setPortName(getTouristAttractionServiceWSDDServiceName());
                 return _stub;
             }
@@ -105,7 +105,7 @@ public class TouristAttractionServiceServiceLocator extends org.apache.axis.clie
     }
 
     public javax.xml.namespace.QName getServiceName() {
-        return new javax.xml.namespace.QName("http://service", "TouristAttractionServiceService");
+        return new javax.xml.namespace.QName("http://service.infoTown.services", "TouristAttractionServiceService");
     }
 
     private java.util.HashSet ports = null;
@@ -113,7 +113,7 @@ public class TouristAttractionServiceServiceLocator extends org.apache.axis.clie
     public java.util.Iterator getPorts() {
         if (ports == null) {
             ports = new java.util.HashSet();
-            ports.add(new javax.xml.namespace.QName("http://service", "TouristAttractionService"));
+            ports.add(new javax.xml.namespace.QName("http://service.infoTown.services", "TouristAttractionService"));
         }
         return ports.iterator();
     }

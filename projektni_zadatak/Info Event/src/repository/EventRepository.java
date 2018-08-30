@@ -1,9 +1,13 @@
 package repository;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Properties;
 import java.util.stream.Collectors;
 
 import model.Event;
@@ -12,9 +16,21 @@ import util.EventCreator;
 
 public class EventRepository {
    
+	private static final String PROPERTIES_PATH = "C:\\Users\\Jelena\\Desktop\\Jelena\\Faks\\III godina\\VI semestar\\MREZNO I DISTRIBUIRANO PROGRAMIRANJE\\projektni_zadatak\\Info Event\\resources\\properties.properties";
+	private static Properties properties;
+	
+	static {
+		properties = new Properties();
+		try {
+			properties.load(new FileReader(new File(PROPERTIES_PATH)));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
 	public EventRepository(){
-		String path = "C:\\Users\\Jelena\\Desktop\\Jelena\\Faks\\III godina\\VI semestar\\MREZNO I DISTRIBUIRANO PROGRAMIRANJE\\projektni_zadatak\\Info Event\\resources\\events.json";
-		File file = new File(path);
+		File file = new File(properties.getProperty("events_file_path"));
 		if(!file.exists()) {
 			EventCreator.saveEventsAsJson();
 			EventCreator.putIntoRadis(EventCreator.getEventsFromJsonFile());
@@ -73,4 +89,14 @@ public class EventRepository {
 		}
 		return false;
 	}
+
+	public static Properties getProperties() {
+		return properties;
+	}
+
+	public static void setProperties(Properties properties) {
+		EventRepository.properties = properties;
+	}
+	
+	
 }

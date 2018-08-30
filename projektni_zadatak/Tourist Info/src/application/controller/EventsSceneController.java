@@ -89,10 +89,12 @@ public class EventsSceneController implements Initializable{
 				categoryComboBox.setVisible(false);
 				locationComboBox.setVisible(true);
 				locationComboBox.getItems().clear();
-				Set<String> locations = new HashSet<>(EventClient.getAllLocations());
+				List<String> locations = EventClient.getAllLocations();
 				if(locations != null) {
-				    locationComboBox.getItems().addAll(locations);
-				}
+					Set<String> locationsSet = new HashSet<>(locations);
+				    locationComboBox.getItems().addAll(locationsSet);
+				}else
+					MessageBox.display("Problem pri dohvatanju podataka sa servera!");
 				break;
 			}
 			case "datum":{

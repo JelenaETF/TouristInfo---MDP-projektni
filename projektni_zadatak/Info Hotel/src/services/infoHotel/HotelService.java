@@ -3,6 +3,7 @@ package services.infoHotel;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,16 +14,19 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.logging.Level;
 
 import services.infoHotel.model.Hotel;
 import serialization.GsonSerialization;
 import serialization.JavaSerialization;
 import serialization.KryoSerialization;
 import util.HotelUtil;
+import util.LoggerWrapper;
 
 public class HotelService extends UnicastRemoteObject implements HotelServiceInterface {
 
 	public static String SERIALIZATION_TYPE;
+	private static LoggerWrapper loggerWrapper = LoggerWrapper.getInstance();
 	
 	public HotelService() throws RemoteException {
 		super();
@@ -33,15 +37,11 @@ public class HotelService extends UnicastRemoteObject implements HotelServiceInt
 		List<Hotel> hotels = new ArrayList<>();
 		if(GsonSerialization.deserializeAll() == null || KryoSerialization.deserializeAll() == null || JavaSerialization.deserializeAll() == null)
 			return null;
-	   
-		try {
-			hotels.addAll(GsonSerialization.deserializeAll());
-			hotels.addAll(KryoSerialization.deserializeAll());
-			hotels.addAll(JavaSerialization.deserializeAll());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			throw new RemoteException("Internal server error!");
-		}
+		
+		hotels.addAll(GsonSerialization.deserializeAll());
+		hotels.addAll(KryoSerialization.deserializeAll());
+		hotels.addAll(JavaSerialization.deserializeAll());
+
 	    return hotels;
 	}
 
@@ -72,7 +72,7 @@ public class HotelService extends UnicastRemoteObject implements HotelServiceInt
 				}
 			}
 		}catch (Exception e) {
-			// TODO: handle exception
+			loggerWrapper.getLogger().log(Level.SEVERE, "Serialization problem", e);
 			throw new RemoteException("Internal server error!");
 		}
 		return hotel.getId();
@@ -80,7 +80,7 @@ public class HotelService extends UnicastRemoteObject implements HotelServiceInt
 
 	@Override
 	public boolean delete(int id) throws RemoteException {
-		try {
+	
 			String mainPath = "resources"+File.separator+"serialized"+File.separator;
 			Path filePath = null;
 			if(GsonSerialization.deserializeHotel(id) != null) {
@@ -93,11 +93,13 @@ public class HotelService extends UnicastRemoteObject implements HotelServiceInt
 				return false;
 			}
 			
-			Files.delete(filePath);
-		}catch (Exception e) {
-			// TODO: handle exception
-			return false;
-		}
+			try {
+				Files.delete(filePath);
+			} catch (IOException e) {
+				loggerWrapper.getLogger().log(Level.SEVERE, "Unable to find deserialization file", e);
+				return false;
+			}
+	
 		return true;
 	}
 
@@ -107,11 +109,10 @@ public class HotelService extends UnicastRemoteObject implements HotelServiceInt
 			properties.load(new FileReader(new File("resources"+File.separator+"serialization.properties")));
 			SERIALIZATION_TYPE = properties.getProperty("serialization");
 		} catch (Exception e) {
-			System.out.println("Unable to find properties file!");
+			loggerWrapper.getLogger().log(Level.SEVERE, "Unable to load properties", e);
 		}
 		
-		String policyPath = "C:\\Users\\Jelena\\Desktop\\Jelena\\Faks\\III godina\\VI semestar\\MREZNO I DISTRIBUIRANO PROGRAMIRANJE\\projektni_zadatak\\Info Hotel\\resources\\server_policyfile.txt";
-		//"resources"+File.separator+"server_policyfile.txt"
+		String policyPath = properties.getProperty("server_policy_file_path");
 		System.setProperty("java.security.policy", policyPath );
 		if(System.getSecurityManager() == null)
 			System.setSecurityManager(new SecurityManager());

@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.Properties;
+import java.util.logging.Level;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -14,16 +15,20 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import com.oracle.tools.packager.Log.Logger;
+
 import application.controller.MainSceneController;
 import javafx.scene.control.TableView;
 import model.TouristInfoClient;
+import util.LoggerWrapper;
 
 public class ConnectionTestThread extends Thread{
 
 	private Socket socket;
 	private TouristInfoClient client;
 	private static TableView<TouristInfoClient> tableToUpdate;
-	private static final String USERNAME = "matija.matijevic1869";
+	private LoggerWrapper loggerWrapper = LoggerWrapper.getInstance();
+	private static final String USERNAME = "matija.matijevic1869@gmail.com";
 	private static final String PASSWORD = "matija1869";
 	
 	public ConnectionTestThread(Socket socket, TouristInfoClient client) {
@@ -43,7 +48,7 @@ public class ConnectionTestThread extends Thread{
 				break;
 			}else {
 				try {
-					sleep(500);
+					sleep(1000);
 				}catch (Exception e) {
 					// TODO: handle exception
 					e.printStackTrace();
@@ -74,7 +79,7 @@ public class ConnectionTestThread extends Thread{
 			Transport.send(message);
 			
 		}catch (Exception e) {
-			e.printStackTrace();
+			loggerWrapper.getLogger().log(Level.SEVERE, "Problem with mail sending", e);
 		}
 	}
 	private boolean isExternalyClosed() {

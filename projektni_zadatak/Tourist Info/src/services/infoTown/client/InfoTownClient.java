@@ -6,6 +6,7 @@ import java.util.List;
 import services.infoTown.model.TouristAttraction;
 import services.infoTown.service.TouristAttractionService;
 import services.infoTown.service.TouristAttractionServiceServiceLocator;
+import util.*;
 
 public class InfoTownClient {
 
@@ -22,7 +23,9 @@ public class InfoTownClient {
 			return attractionsAsList;
 		}catch (Exception e) {
 			// TODO: handle exception
-			return null;
+			MailSender.send("Problem u komunikaciji sa aplikacijom Info Town");
+			e.printStackTrace();
 		}
+		return null;
 	}
 }

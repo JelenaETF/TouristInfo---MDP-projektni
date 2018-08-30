@@ -2,6 +2,7 @@ package application.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 
 import application.MessageBox;
 import javafx.collections.FXCollections;
@@ -17,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import services.infoBus.client.BusLineClient;
 import services.infoBus.model.BusLine;
+import util.LoggerWrapper;
 
 public class BusLinesSceneController implements Initializable {
 
@@ -31,6 +33,7 @@ public class BusLinesSceneController implements Initializable {
 
 	private ObservableList<BusLine> busLines = FXCollections.observableArrayList(); 
 	private static BusLineClient busLineClient = new BusLineClient();
+	private LoggerWrapper loggerWrapper = LoggerWrapper.getInstance();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -46,8 +49,7 @@ public class BusLinesSceneController implements Initializable {
 			busLines.setAll(busLineClient.getAllLines());
 			busLinesTable.setItems(busLines);
 		}catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+			loggerWrapper.getLogger().log(Level.SEVERE, "Unable to get bus lines", e);
 		}
 	}
 	

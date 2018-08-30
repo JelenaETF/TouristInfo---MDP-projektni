@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions targetNamespace="http://service" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service" xmlns:intf="http://service" xmlns:tns1="http://model" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<wsdl:definitions targetNamespace="http://service.infoTown.services" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service.infoTown.services" xmlns:intf="http://service.infoTown.services" xmlns:tns1="http://model.infoTown.services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 <!--WSDL created by Apache Axis version: 1.4
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
-  <schema elementFormDefault="qualified" targetNamespace="http://service" xmlns="http://www.w3.org/2001/XMLSchema">
-   <import namespace="http://model"/>
+  <schema elementFormDefault="qualified" targetNamespace="http://service.infoTown.services" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://model.infoTown.services"/>
    <element name="getAll">
     <complexType/>
    </element>
@@ -16,7 +16,7 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     </complexType>
    </element>
   </schema>
-  <schema elementFormDefault="qualified" targetNamespace="http://model" xmlns="http://www.w3.org/2001/XMLSchema">
+  <schema elementFormDefault="qualified" targetNamespace="http://model.infoTown.services" xmlns="http://www.w3.org/2001/XMLSchema">
    <complexType name="TouristAttraction">
     <sequence>
      <element name="description" nillable="true" type="xsd:string"/>
@@ -27,17 +27,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
   </schema>
  </wsdl:types>
 
-   <wsdl:message name="getAllResponse">
+   <wsdl:message name="getAllRequest">
 
-      <wsdl:part element="impl:getAllResponse" name="parameters">
+      <wsdl:part element="impl:getAll" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:message name="getAllRequest">
+   <wsdl:message name="getAllResponse">
 
-      <wsdl:part element="impl:getAll" name="parameters">
+      <wsdl:part element="impl:getAllResponse" name="parameters">
 
       </wsdl:part>
 

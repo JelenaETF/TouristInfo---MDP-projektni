@@ -3,6 +3,7 @@ package application.controller;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 
 import application.MessageBox;
 import javafx.collections.FXCollections;
@@ -19,6 +20,7 @@ import javafx.stage.Stage;
 import services.infoHotel.HotelServiceInterface;
 import services.infoHotel.client.HotelClient;
 import services.infoHotel.model.Hotel;
+import util.LoggerWrapper;
 
 public class HotelsSceneController implements Initializable{
 
@@ -35,6 +37,7 @@ public class HotelsSceneController implements Initializable{
 	
 	private static ObservableList<Hotel> hotelsList = FXCollections.observableArrayList();
 	private HotelServiceInterface service = HotelClient.getHotelService();
+	private LoggerWrapper loggerWrapper = LoggerWrapper.getInstance();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -52,7 +55,7 @@ public class HotelsSceneController implements Initializable{
 		hotelsList.addAll(service.getAll());
 	} catch (RemoteException e) {
 		// TODO Auto-generated catch block
-		e.printStackTrace();
+		loggerWrapper.getLogger().log(Level.SEVERE, "Problem when try to get hotels", e);
 	}
 	  hotelsTable.setItems(hotelsList);
 	  AddNewHotelSceneController.setTableToUpdate(hotelsTable);
@@ -89,7 +92,7 @@ public class HotelsSceneController implements Initializable{
 					MessageBox.display("Greska prilikom uklanjanja!");
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggerWrapper.getLogger().log(Level.SEVERE, "Problem when trying to remove hotel", e);
 			}
 		}
 	}

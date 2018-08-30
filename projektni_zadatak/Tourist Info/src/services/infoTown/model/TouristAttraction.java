@@ -1,5 +1,3 @@
-package services.infoTown.model;
-
 /**
  * TouristAttraction.java
  *
@@ -7,7 +5,7 @@ package services.infoTown.model;
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-
+package services.infoTown.model;
 
 public class TouristAttraction  implements java.io.Serializable {
     private java.lang.String description;
@@ -138,22 +136,22 @@ public class TouristAttraction  implements java.io.Serializable {
         new org.apache.axis.description.TypeDesc(TouristAttraction.class, true);
 
     static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("http://model", "TouristAttraction"));
+        typeDesc.setXmlType(new javax.xml.namespace.QName("http://model.infoTown.services", "TouristAttraction"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("description");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://model", "description"));
+        elemField.setXmlName(new javax.xml.namespace.QName("http://model.infoTown.services", "description"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("imageURL");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://model", "imageURL"));
+        elemField.setXmlName(new javax.xml.namespace.QName("http://model.infoTown.services", "imageURL"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("name");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://model", "name"));
+        elemField.setXmlName(new javax.xml.namespace.QName("http://model.infoTown.services", "name"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);

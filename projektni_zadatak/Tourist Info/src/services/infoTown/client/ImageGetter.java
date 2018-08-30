@@ -4,15 +4,19 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.net.URL;
 import java.security.MessageDigest;
+import java.util.logging.Level;
 
 import javax.imageio.ImageIO;
 
+import util.LoggerWrapper;
 
 
-public class ImageGetter {
+
+public class ImageGetter { 
 	
 	private static final String PATH = "C:\\Users\\Jelena\\Desktop\\Jelena\\Faks\\III godina\\VI semestar\\MREZNO I DISTRIBUIRANO PROGRAMIRANJE\\projektni_zadatak\\Tourist Info\\src\\services\\infoTown\\client\\images\\";
-
+	private static final LoggerWrapper loggerWrapper = LoggerWrapper.getInstance();
+	
 	public static String saveImageFromURL(String urlString) {
 		try {
 			URL imageURL = new URL(urlString);
@@ -26,7 +30,7 @@ public class ImageGetter {
 		        }
 				return name+"."+extension;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			loggerWrapper.getLogger().log(Level.SEVERE, "Problem while saving image from URL", e);
 			return null;
 		}
 	}
@@ -53,7 +57,7 @@ public class ImageGetter {
 			return sb.toString();
 		} catch (Exception e) {
 			// TODO: handle exception
-			e.printStackTrace();
+			loggerWrapper.getLogger().log(Level.SEVERE, "Problem with generating hash string for image name", e);
 		}
 		return "";
 	}

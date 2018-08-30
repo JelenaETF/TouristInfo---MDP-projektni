@@ -1,0 +1,24 @@
+Aug 22, 2018 2:22:24 PM server.ConnectionTestThread sendMail
+SEVERE: Problem with mail sending
+com.sun.mail.smtp.SMTPSendFailedException: 530 5.7.0 Must issue a STARTTLS command first. m129-v6sm24001328wma.1 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport.issueSendCommand(SMTPTransport.java:2133)
+	at com.sun.mail.smtp.SMTPTransport.mailFrom(SMTPTransport.java:1630)
+	at com.sun.mail.smtp.SMTPTransport.sendMessage(SMTPTransport.java:1132)
+	at javax.mail.Transport.send0(Transport.java:254)
+	at javax.mail.Transport.send(Transport.java:124)
+	at server.ConnectionTestThread.sendMail(ConnectionTestThread.java:79)
+	at server.ConnectionTestThread.run(ConnectionTestThread.java:47)
+
+Aug 22, 2018 2:34:44 PM server.ConnectionTestThread sendMail
+SEVERE: Problem with mail sending
+com.sun.mail.smtp.SMTPSendFailedException: 530 5.7.0 Must issue a STARTTLS command first. r13-v6sm1796339wmf.34 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport.issueSendCommand(SMTPTransport.java:2133)
+	at com.sun.mail.smtp.SMTPTransport.mailFrom(SMTPTransport.java:1630)
+	at com.sun.mail.smtp.SMTPTransport.sendMessage(SMTPTransport.java:1132)
+	at javax.mail.Transport.send0(Transport.java:254)
+	at javax.mail.Transport.send(Transport.java:124)
+	at server.ConnectionTestThread.sendMail(ConnectionTestThread.java:79)
+	at server.ConnectionTestThread.run(ConnectionTestThread.java:47)
+

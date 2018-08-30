@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="260.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainSceneController">
+<AnchorPane prefHeight="260.0" prefWidth="300.0" style="-fx-background-color: #e5e7e9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainSceneController">
    <children>
-      <TableView fx:id="clientsTable" layoutX="14.0" layoutY="11.0" prefHeight="200.0" prefWidth="266.0">
+      <TableView fx:id="clientsTable" layoutX="-1.0" layoutY="-1.0" prefHeight="212.0" prefWidth="300.0" style="-fx-background-color: #e5e7e9;">
         <columns>
-          <TableColumn fx:id="ipAddress" prefWidth="75.0" text="IP adresa" />
-          <TableColumn fx:id="port" prefWidth="75.0" text="Port" />
-            <TableColumn fx:id="activationTime" prefWidth="115.0" text="Vrijeme aktivacije" />
+          <TableColumn fx:id="ipAddress" prefWidth="92.0" style="-fx-background-color: #b3b6b3;" text="IP adresa" />
+          <TableColumn fx:id="port" prefWidth="81.0" style="-fx-background-color: #b3b6b3;" text="Port" />
+            <TableColumn fx:id="activationTime" prefWidth="126.0" style="-fx-background-color: #b3b6b3;" text="Vrijeme aktivacije" />
         </columns>
       </TableView>
-      <Button layoutX="234.0" layoutY="223.0" mnemonicParsing="false" onAction="#shutDown" text="Ugasi" />
+      <Button layoutX="216.0" layoutY="217.0" mnemonicParsing="false" onAction="#shutDown" prefHeight="31.0" prefWidth="64.0" style="-fx-background-color: #b3b6b3;" text="Ugasi">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
    </children>
 </AnchorPane>

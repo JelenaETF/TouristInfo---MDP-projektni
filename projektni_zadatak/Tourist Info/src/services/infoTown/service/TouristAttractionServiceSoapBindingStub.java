@@ -25,9 +25,9 @@ public class TouristAttractionServiceSoapBindingStub extends org.apache.axis.cli
         org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("getAll");
-        oper.setReturnType(new javax.xml.namespace.QName("http://model", "TouristAttraction"));
+        oper.setReturnType(new javax.xml.namespace.QName("http://model.infoTown.services", "TouristAttraction"));
         oper.setReturnClass(services.infoTown.model.TouristAttraction[].class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://service", "getAllReturn"));
+        oper.setReturnQName(new javax.xml.namespace.QName("http://service.infoTown.services", "getAllReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
         _operations[0] = oper;
@@ -63,7 +63,7 @@ public class TouristAttractionServiceSoapBindingStub extends org.apache.axis.cli
             java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
             java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
             java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
-            qName = new javax.xml.namespace.QName("http://model", "TouristAttraction");
+            qName = new javax.xml.namespace.QName("http://model.infoTown.services", "TouristAttraction");
             cachedSerQNames.add(qName);
             cls = services.infoTown.model.TouristAttraction.class;
             cachedSerClasses.add(cls);
@@ -148,7 +148,7 @@ public class TouristAttractionServiceSoapBindingStub extends org.apache.axis.cli
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://service", "getAll"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://service.infoTown.services", "getAll"));
 
         setRequestHeaders(_call);
         setAttachments(_call);

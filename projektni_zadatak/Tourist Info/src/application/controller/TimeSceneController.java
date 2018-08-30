@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import util.TimeThread;
 
 
 public class TimeSceneController implements Initializable{
@@ -19,8 +20,7 @@ public class TimeSceneController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-		LocalDateTime localDateTime = LocalDateTime.now();
-		timeLabel.setText(localDateTime.format(dateTimeFormatter));
+		TimeThread timeThread = new TimeThread(timeLabel);
+		timeThread.start();
 	}
 }

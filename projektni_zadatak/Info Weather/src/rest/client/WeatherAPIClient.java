@@ -7,16 +7,19 @@ import java.net.URL;
 import java.time.Instant;
 import java.time.LocalTime;
 import java.time.ZoneId;
+import java.util.logging.Level;
 
 import org.json.JSONObject;
 
 import rest.model.Weather;
+import util.LoggerWrapper;
 
 public class WeatherAPIClient {
    
 	private static final String API_KEY = "c41eb7d0a1245b98c8929833f6d0155d";
 	private static final Integer CITY_ID = 3204541;
 	private static final String PATH = "https://api.openweathermap.org/data/2.5/weather?id="+ CITY_ID+"&APPID="+API_KEY;
+	private static LoggerWrapper loggerWrapper = LoggerWrapper.getInstance();
 	
 	public static Weather getWeatherInfo() {
 		Weather weather = null;;
@@ -37,8 +40,7 @@ public class WeatherAPIClient {
 		
 		return weather;
 		}catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+			loggerWrapper.getLogger().log(Level.SEVERE, "Problem when getting data from Weather API", e);
 		}
 		return weather;
 	}
